@@ -70,7 +70,20 @@ public class GiangVienServlet extends HttpServlet {
         }
     }
 
-    private void update(HttpServletRequest request, HttpServletResponse response) {
+    private void update(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException, IOException {
+        // B1: Lay lai doi tuong gv can up thong qua id
+        String id = request.getParameter("id");
+        GiangVien gv = new GiangVien();
+        int index = -1;
+        for (int i = 0 ;i < lists.size();i++){
+            if(lists.get(i).getId().equalsIgnoreCase(id)){
+                gv = lists.get(i);
+                index = i;
+            }
+        }
+        BeanUtils.populate(gv,request.getParameterMap());
+        lists.set(index,gv);
+        response.sendRedirect("/giang-vien/hien-thi");
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws InvocationTargetException, IllegalAccessException, IOException {
@@ -80,17 +93,40 @@ public class GiangVienServlet extends HttpServlet {
         response.sendRedirect("/giang-vien/hien-thi");
     }
 
-    private void searchTheoTen(HttpServletRequest request, HttpServletResponse response) {
-    }
+    private void searchTheoTen(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String ten = request.getParameter("ten");
+        List<GiangVien> listSearch = new ArrayList<>();
+        for (GiangVien giangVien : lists) {
+            if (giangVien.getTen().contains(ten)) {
+                listSearch.add(giangVien);
+            }
+        }
+        request.setAttribute("a" , listSearch);
+        request.getRequestDispatcher("/buoi1/giangVien.jsp").forward(request, response);
+   }
 
     private void viewAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/buoi1/add-giang-vien.jsp").forward(request, response);
     }
 
-    private void viewUpdate(HttpServletRequest request, HttpServletResponse response) {
+    private void viewUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id1"); // lay tu phia jsp ve servlet
+        for (GiangVien gv : lists) {
+            if (gv.getId().equalsIgnoreCase(id)) {
+                request.setAttribute("gv111", gv); // truyen gia tri tu phia servlet => jsp
+            }
+        }
+        request.getRequestDispatcher("/buoi1/update-giang-vien.jsp").forward(request, response);
     }
 
-    private void detailGiangVien(HttpServletRequest request, HttpServletResponse response) {
+    private void detailGiangVien(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id"); // lay tu phia jsp ve servlet
+        for (GiangVien gv : lists) {
+            if (gv.getId().equalsIgnoreCase(id)) {
+                request.setAttribute("gv111", gv); // truyen gia tri tu phia servlet => jsp
+            }
+        }
+        request.getRequestDispatcher("/buoi1/detail-Giang-Vien.jsp").forward(request, response);
     }
 
     private void removeGiangVien(HttpServletRequest request, HttpServletResponse response) throws IOException {

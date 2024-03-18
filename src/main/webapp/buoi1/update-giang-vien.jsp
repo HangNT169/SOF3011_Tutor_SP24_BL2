@@ -12,22 +12,22 @@
 </head>
 <body>
 
-<form action="">
-    STT: <input type="text" name="mssv"  />
+<form action="/giang-vien/update" method="post">
+    ID: <input type="text" name="id" value="${gv111.id}"/>
     <br/>
-    Mã: <input type="text" name="ten"/>
+    Mã: <input type="text" name="ma" value="${gv111.ma}"/>
     <br/>
-    Tên: <input type="text" name="ten" />
+    Tên: <input type="text" name="ten" value="${gv111.ten}"/>
     <br/>
-    Tuổi: <input type="text" name="ten" />
+    Tuổi: <input type="text" name="tuoi" value="${gv111.tuoi}"/>
     <br/>
     Giới tính:
-    <input type="radio" name="gioiTinh" />Nam
-    <input type="radio" name="gioiTinh" />Nữ
+    <input type="radio" name="gioiTinh" value="true" ${gv111.gioiTinh == true?"checked":""}/>Nam
+    <input type="radio" name="gioiTinh" value="false" ${gv111.gioiTinh == false?"checked":""}/>Nữ
     <br/>
-    Địa chỉ: <input type="text" name="diaChi" />
+    Địa chỉ: <input type="text" name="diaChi" value="${gv111.diaChi}"/>
     <br>
-    <button>Update</button>
+    <button type="submit">Update</button>
 </form>
 </body>
 </html>

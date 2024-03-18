@@ -5,12 +5,12 @@
     <title>Danh sách giảng viên</title>
 </head>
 <body>
-<div>
+<form action="/giang-vien/search">
     <Span>Tên:</Span>
-    <input type="text">
+    <input type="text" name="ten">
     <br>
-    <button>Search</button>
-</div>
+    <button type="submit">Search</button>
+</form>
 <br>
 <br>
 <div>
@@ -42,9 +42,9 @@
             <td>${gv.gioiTinh}</td>
             <td>${gv.diaChi}</td>
             <td>
-                <a href="/giang-vien/detail"><button>Detail</button></a>
+                <a href="/giang-vien/detail?id=${gv.id}"><button>Detail</button></a>
                 <a href="/giang-vien/remove?abc=${gv.id}"><button>Remove</button></a>
-                <a href="/giang-vien/view-update"><button>Update</button></a>
+                <a href="/giang-vien/view-update?id1=${gv.id}"><button>Update</button></a>
             </td>
         </tr>
     </c:forEach>
