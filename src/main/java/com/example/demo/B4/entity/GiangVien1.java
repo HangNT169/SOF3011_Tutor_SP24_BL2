@@ -1,4 +1,4 @@
-package com.sof3011.hangnt.B11_Tutor.entity;
+package com.example.demo.B4.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,6 @@
-package com.sof3011.hangnt.B11_Tutor.util;
+package com.example.demo.B4.util;
 
-import com.sof3011.hangnt.B11_Tutor.entity.GiangVien1;
+import com.example.demo.B4.entity.GiangVien1;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -20,7 +20,7 @@ public class HibernateUtil {
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=BTVNBuoi7;encrypt=true;trustServerCertificate=true;");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "Password.1");
+        properties.put(Environment.PASS, "cuong");
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);

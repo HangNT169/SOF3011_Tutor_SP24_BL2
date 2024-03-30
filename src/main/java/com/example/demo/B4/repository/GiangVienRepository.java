@@ -1,7 +1,7 @@
-package com.sof3011.hangnt.B11_Tutor.repository;
+package com.example.demo.B4.repository;
 
-import com.sof3011.hangnt.B11_Tutor.entity.GiangVien1;
-import com.sof3011.hangnt.B11_Tutor.util.HibernateUtil;
+import com.example.demo.B4.entity.GiangVien1;
+import com.example.demo.B4.util.HibernateUtil;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -18,6 +18,10 @@ public class GiangVienRepository {
     public List<GiangVien1> getAll() {
         List<GiangVien1> lists = s.createQuery("FROM GiangVien1 ").list();
         return lists;
+    }
+
+    public GiangVien1 getOne(Long id) {
+        return s.find(GiangVien1.class, id);
     }
 
     public void addGiangVien(GiangVien1 gv) {

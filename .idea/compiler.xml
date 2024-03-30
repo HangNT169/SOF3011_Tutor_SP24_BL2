@@ -10,8 +10,5 @@
         <module name="SOF3011_Tutor_SP24_BL2" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SOF3011_Tutor_SP24_BL2" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
